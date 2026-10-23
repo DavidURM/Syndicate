@@ -1,0 +1,37 @@
+@syndicate-lang/core - afermentioned
+
+
+typescript:
+----------------
+
+# | - or, union
+let id: string | number;
+
+id = "abc123"; // OK
+id = 123;      // OK
+id = true;     // Error: boolean isn't allowed
+----------------
+
+syndicate:
+
+Turn: 
+During a turn, an actor can:
+- Handle an incoming event.
+- Change its state.
+- Publish or withdraw assertions.
+- Stop itself.
+    example:
+
+    writerFacet.turn(() => { // enters writer1’s Syndicate context
+        stop; // ends its behavior and withdraws its assertions
+    });
+
+Departure handling and subscriber model when a write W, stops and parrot is listening
+The writer stops.
+Its presence assertion is automatically withdrawn.
+The dataspace finds the matching subscription and notifies the parrot.
+The parrot runs its departure handler during its own turn.
+
+Dataspace - dataspace class
+assert - assertion
+field - reactive state that syndicate can track

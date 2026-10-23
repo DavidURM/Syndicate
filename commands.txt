@@ -1,0 +1,11 @@
+- Step 1: Get syndicate-js installed and running
+
+npm install --save-exact @syndicate-lang/core@1.0.0-rc.1 @preserves/core@1.0.0-rc.1 
+npm install --save-dev --save-exact @syndicate-lang/tsc@1.0.0-rc.2 typescript@5.8.3	
+npx syndicate-tsc
+node dist/index.js
+
+core - provides actors, dataspaces, assertions, messages
+preserves/core  - data representation syndicate uses
+tsc - compiler
+

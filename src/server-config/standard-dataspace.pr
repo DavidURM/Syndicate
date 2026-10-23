@@ -1,0 +1,9 @@
+let ?ds = dataspace
+
+# Connect using <route [<ws "...">] <ref {oid: "syndicate" sig: #[acowDB2/oI+6aSEC3YIxGg]}>
+<bind <ref {oid: "syndicate" key: #x""}> $ds #f>
+
+# Connect using <route [<ws "...">] <noise { service: "syndicate", key: #x"21f6cd4e11e7e37711d6b3084ff18cded8fc8abf293aa47d43e8bb86dda65516" }>>
+let ?sk = #x"7626eb6c0ee79cb928a0c3f6e29621e9119da6735859f1425956a49fd937e586"
+let ?pk = #x"21f6cd4e11e7e37711d6b3084ff18cded8fc8abf293aa47d43e8bb86dda65516"
+<bind <noise { service: "syndicate", key: $pk, secretKey: $sk }> $ds #f>

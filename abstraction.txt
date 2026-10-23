@@ -1,0 +1,5 @@
+# made some abstractions for running the projects
+# reasoning: I tried more to focus on the mental model for this project and try to leave node technicalities such as compile commands `npx syndicate-tsc` something 
+# to be done for later
+compile: npx syndicate-tsc
+run: node dist/index.js
