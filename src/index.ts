@@ -1,16 +1,32 @@
-import { Dataspace, Turn, Facet, stringify } from "@syndicate-lang/core";
+
+// core dependencies
+import { Dataspace, Turn, Facet, stringify,Schemas,parse,Ref } from "@syndicate-lang/core";
+
+// server dependencies
+import { boot as bootWsRelay, contactRemote } from "@syndicate-lang/ws-relay";
 assertion type WriterPresent(name: string);
-// import { setTimeout as sleep } from 'node:timers/promises';
-
-//   - Step 1: write a “hello world” program in Syndicate/TS.
-
 
 // Create a shared local dataspace.
 
+// address of the server space
+const route = Schemas.gatekeeper.asRoute(parse<Ref>(`
+    <route [<ws "ws://127.0.0.1:9001/">]
+        <noise {
+            service: "syndicate",
+            key: #x"21f6cd4e11e7e37711d6b3084ff18cded8fc8abf293aa47d43e8bb86dda65516"
+        }>>
+`));
+
 Dataspace.boot(ds => {
+
+    // I dont exactly know what bootWSRelay does, assume it is a reference to the shared dataspace 
+    // running inside server.
+    bootWsRelay(ds);
+
     // An actor that watches for string assertions.
     const actorFacets = new Map<string, Facet>();
     setTimeout(() => pullPlug("writerOrigin"), 2000);
+    
     spawn named "reader" {
         at ds {
             let greeting = 'welcome';

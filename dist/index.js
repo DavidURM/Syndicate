@@ -1,12 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const __SYNDICATE__ = require("@syndicate-lang/core");
+// core dependencies
 const core_1 = require("@syndicate-lang/core");
+// server dependencies
+const ws_relay_1 = require("@syndicate-lang/ws-relay");
 const WriterPresent = __SYNDICATE__.Record.makeConstructor()(Symbol.for("WriterPresent"), ["name"]);
-// import { setTimeout as sleep } from 'node:timers/promises';
-//   - Step 1: write a “hello world” program in Syndicate/TS.
 // Create a shared local dataspace.
+// address of the server space
+const route = core_1.Schemas.gatekeeper.asRoute((0, core_1.parse)(`
+    <route [<ws "ws://127.0.0.1:9001/">]
+        <noise {
+            service: "syndicate",
+            key: #x"21f6cd4e11e7e37711d6b3084ff18cded8fc8abf293aa47d43e8bb86dda65516"
+        }>>
+`));
 core_1.Dataspace.boot(ds => {
+    // I dont exactly know what bootWSRelay does, assume it is a reference to the shared dataspace 
+    // running inside server.
+    (0, ws_relay_1.boot)(ds);
     // An actor that watches for string assertions.
     const actorFacets = new Map();
     setTimeout(() => pullPlug("writerOrigin"), 2000);

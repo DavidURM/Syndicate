@@ -9,3 +9,9 @@ core - provides actors, dataspaces, assertions, messages
 preserves/core  - data representation syndicate uses
 tsc - compiler
 
+- Step 2
+
+install server dependencies
+
+npm install @syndicate-lang/ws-relay@1.0.0-rc.2
+

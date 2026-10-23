@@ -3,3 +3,4 @@
 # to be done for later
 compile: npx syndicate-tsc
 run: node dist/index.js
+serve-syndicate: syndicate-server --config ./server-config

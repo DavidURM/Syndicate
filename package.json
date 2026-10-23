@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "@syndicate-lang/ws-relay": "^1.0.0-rc.2"
+  }
 }
