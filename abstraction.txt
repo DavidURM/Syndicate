@@ -1,6 +1,6 @@
-# made some abstractions for running the projects
-# reasoning: I tried more to focus on the mental model for this project and try to leave node technicalities such as compile commands `npx syndicate-tsc` something 
-# to be done for later
+# made some abstractions for the commands needed to run the demo
+# reasoning: I tried more to focus on the mental model for this demo and try to not get stuck with ts tooling
+# to be done later
 compile: npx syndicate-tsc
 run: node dist/index.js
 serve-syndicate: syndicate-server --config ./server-config
